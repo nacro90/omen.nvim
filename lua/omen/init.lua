@@ -277,7 +277,6 @@ function omen.insert()
     if pass == repass then
       print "The entered passwords do not match"
     end
-    vim.cmd "mode"
   until pass == repass
 
   insert_entry(path, pass)
@@ -316,10 +315,6 @@ function omen.setup(user_opts)
   log.info "plugin initialized"
   omen.opts = vim.tbl_extend("force", omen.opts, user_opts or {})
   map("n", "<leader>P", "<Cmd>lua require('omen').telescope()<CR>", {})
-  -- nnoremap("<leader>P", omen.telescope)
-  -- command("OmenTelescope", omen.telescope)
-  -- command("OmenInsert", omen.insert)
-  -- command("OmenGenerate", omen.generate)
 end
 
 return omen
