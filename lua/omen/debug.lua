@@ -15,7 +15,7 @@ function debug_.reload()
       package.loaded[name] = nil
     end
   end
-  print "RELOADED"
+  log.warn "RELOADED"
 end
 
 return debug_
