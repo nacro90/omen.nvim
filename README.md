@@ -6,7 +6,7 @@ Omen is a password manager like plugin for Neovim
 
 
 ## Why?
-I am using `pass` to manage my passwords. I am using this plugin in my config for months and I
+I am using `pass` to manage my passwords. I have been using this plugin in my config for months and I
 really loved picking my passwords with telescope. So, I want to create a new plugin.
 
 
@@ -34,16 +34,11 @@ use {
   requires = {
     "nvim-lua/telescope.nvim",
     "nvim-lua/plenary.nvim",
-  }
+  },
+  config = function()
+    require("omen").setup()
+  end
 },
-```
-
-### Setup
-
-After getting the plugin, setup function have to be used to initiate it.
-
-```lua
-require("omen").setup()
 ```
 
 ### Config
@@ -115,7 +110,7 @@ require("omen").pick()
 
 ## TODO
 
-- [X] Copy a password file content to a register with retention
+- [X] Copy a password file content to a register with a retention
 - [ ] Inserting new password to the store
 - [ ] Generating new password for the store
 - [ ] Callbacks and events
