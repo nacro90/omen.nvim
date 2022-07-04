@@ -12,10 +12,11 @@ really loved picking my passwords with telescope. So, I want to create a new plu
 
 ## Features
 
-- Copy a password file content to a register
-- Removes the register content after given retention time
-- Uses safe gpg passphrase cache
-- Never stores your passphrase in anywhere
+- Picks your password from your password store directory
+- Asks your passphrase but never saves it
+- Decrypts the file you picked and copy the first line to clipboard
+- Clears the contents of the register after a retention
+- Uses the safe passphrase cache of gpg to easily pick multiple passwords without a passphrase
 
 
 ## Requirements
