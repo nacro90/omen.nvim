@@ -2,7 +2,7 @@
 
 Omen is a password manager like plugin for Neovim
 
-![pick.gif](https://gist.github.com/nacro90/787eb4f98d8c947d100c040997fd9b65/raw)
+![pick.gif](https://gist.github.com/nacro90/787eb4f98d8c947d100c040997fd9b65/raw/pick.gif)
 
 ## Why?
 I am using `pass` to manage my passwords. I am using this plugin in my config for months and I
