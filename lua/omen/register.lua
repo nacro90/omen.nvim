@@ -1,48 +1,24 @@
 local register = {}
 
-local fn = vim.fn
-
----@class RegisterCache
----@field public counter integer @Overlapped store counter
----@field public content string
-
----@type table<string, RegisterCache>
-local register_caches = {}
-
-function register.clear_caches()
-  register_caches = {}
-end
-
-function register.get_caches()
-  return register_caches
-end
-
-local function create_defer_callback(register_char)
-  return function()
-    local cache = register_caches[register_char]
-    assert(cache.counter > 0)
-    if cache.counter == 1 then
-      fn.setreg(register_char, cache.content, "c")
-      register_caches[register_char] = nil
-    end
-    cache.counter = cache.counter - 1
+---Fills a register given content with a retention
+---@param regchar string @Register char string
+---@param content string @Content to be stored in register
+---@param retention integer @Retention to remove the content in seconds
+function register.fill_with_retention(regchar, content, retention)
+  local msg
+  if regchar == "+" then
+    msg = "Password copied to clipboard"
+  else
+    local fmt = "Filled register %s"
+    msg = fmt:format(regchar)
   end
-end
+  print(msg)
+  vim.fn.setreg(regchar, content, "c")
 
-function register.store_pass(password, register_char, timeout_in_seconds)
-  if not register_caches[register_char] then
-    register_caches[register_char] = { counter = 0 }
-  end
-  local cache = register_caches[register_char]
-  cache.content = cache.content or fn.getreg(register_char)
-  fn.setreg(register_char, password, "c")
-  cache.counter = cache.counter + 1
-  vim.defer_fn(create_defer_callback(register_char), timeout_in_seconds)
-end
-
-if _TEST then
-  ---Expose locals for test
-  register.create_defer_callback = create_defer_callback
+  vim.defer_fn(function()
+    vim.fn.setreg(regchar, "", "c")
+    print(("Cleared register %s"):format(regchar))
+  end, retention * 1000)
 end
 
 return register
