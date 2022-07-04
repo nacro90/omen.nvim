@@ -2,7 +2,8 @@
 
 Omen is a password manager like plugin for Neovim
 
-![pick.gif](https://gist.github.com/nacro90/787eb4f98d8c947d100c040997fd9b65/raw/pick.gif)
+![pick.gif](https://gist.githubusercontent.com/nacro90/787eb4f98d8c947d100c040997fd9b65/raw/595b1be683e37e2610984f55850bd06faa16144f/pick.gif)
+
 
 ## Why?
 I am using `pass` to manage my passwords. I am using this plugin in my config for months and I
@@ -11,7 +12,8 @@ really loved picking my passwords with telescope. So, I want to create a new plu
 
 ## Features
 
-- Copy a password file content to a register with retention
+- Copy a password file content to a register
+- Removes the register content after given retention time
 - Uses safe gpg passphrase cache
 - Never stores your passphrase in anywhere
 
